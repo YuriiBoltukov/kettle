@@ -29,9 +29,13 @@ export const WaterLevel: React.FC<WaterLevelProps> = ({ onAddWater }) => {
    * Function to add water based on the input value.
    * @param {number} inputWater - The amount of water to add.
    */
-  const addWater = (inputWater: number):void => {
-      onAddWater(inputWater);
-      setInputWater('');
+  const addWater = (inputWater: number): void => {
+    onAddWater(inputWater);
+    setInputWater('');
+  };
+
+  const removeWater = () => {
+    onAddWater(0);
   };
 
   return (
@@ -47,8 +51,8 @@ export const WaterLevel: React.FC<WaterLevelProps> = ({ onAddWater }) => {
           onChange={handleInputChange}
         />
       </label>
-      <button onClick={() => addWater}>Add</button>
+      <button onClick={() => addWater(+inputWater)}>Add</button>
+      <button onClick={() => removeWater()}>Remove</button>
     </div>
   );
 };
-
